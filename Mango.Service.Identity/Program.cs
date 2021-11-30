@@ -1,7 +1,37 @@
+using Mango.Service.Identity;
+using Mango.Service.Identity.DbContexts;
+using Mango.Service.Identity.Initializer;
+using Mango.Service.Identity.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Logging;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+
+var identityBuilder = builder.Services.AddIdentityServer(options =>
+{
+    options.Events.RaiseErrorEvents = true;
+    options.Events.RaiseInformationEvents = true;
+    options.Events.RaiseFailureEvents = true;
+    options.Events.RaiseSuccessEvents = true;
+    options.EmitStaticAudienceClaim = true;
+
+}).AddInMemoryIdentityResources(StaticDetails.IdentityResources)
+.AddInMemoryApiScopes(StaticDetails.ApiScopes)
+.AddInMemoryClients(StaticDetails.Clients)
+.AddAspNetIdentity<ApplicationUser>();
+
+builder.Services.AddScoped<IDbIntializer, DbIntializer>();
+identityBuilder.AddDeveloperSigningCredential();
+
 
 var app = builder.Build();
 
@@ -12,12 +42,12 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
+ 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseIdentityServer();
 app.UseAuthorization();
 
 app.MapControllerRoute(

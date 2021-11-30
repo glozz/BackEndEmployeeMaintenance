@@ -9,6 +9,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using Duende.IdentityServer.Services;
+using Mango.Service.Identity.DbContexts;
+using Microsoft.AspNetCore.Identity;
+using Mango.Service.Identity.Models;
+using Mango.Service.Identity.Initializer;
 
 namespace IdentityServerHost.Quickstart.UI
 {
@@ -20,15 +24,40 @@ namespace IdentityServerHost.Quickstart.UI
         private readonly IWebHostEnvironment _environment;
         private readonly ILogger _logger;
 
-        public HomeController(IIdentityServerInteractionService interaction, IWebHostEnvironment environment, ILogger<HomeController> logger)
+        private readonly ApplicationDbContext _db;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+        public HomeController(IIdentityServerInteractionService interaction, IWebHostEnvironment environment, ILogger<HomeController> logger, ApplicationDbContext db, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _interaction = interaction;
             _environment = environment;
             _logger = logger;
+              _db = db;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public IActionResult Index()
         {
+            var dbini = new DbIntializer(_db, _userManager, _roleManager);
+            dbini.Initialize();
+
+            if (_environment.IsDevelopment())
+            {
+                // only show in development
+                return View();
+            }
+
+            _logger.LogInformation("Homepage is disabled in production. Returning 404.");
+            return NotFound();
+        }
+
+        public IActionResult login()
+        {
+            var dbini = new DbIntializer(_db, _userManager, _roleManager);
+            dbini.Initialize();
+
             if (_environment.IsDevelopment())
             {
                 // only show in development
