@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mango.Services.ShoppingCartAPI.Models
 {
     public class CartDetails
     {
+        [Key]
         public int CartDetailId { get; set; }
         public int CartHearderId { get; set; }
         [ForeignKey("CartHearderId ")]
