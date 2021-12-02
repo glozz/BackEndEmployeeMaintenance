@@ -1,5 +1,6 @@
 ﻿using Mango.Web.Models;
 using Mango.Web.Services.IServices;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -21,7 +22,9 @@ namespace Mango.Web.Controllers
         {
             List<ProductDto> list = new List<ProductDto>();
 
-            var response = await _productionService.GetAllProductAsync<ResponseDto>();
+            var accessToken = await HttpContext.GetTokenAsync("access_token");
+
+            var response = await _productionService.GetAllProductAsync<ResponseDto>(accessToken);
             if (response != null && response.IsSuccess)
             {
                 list = JsonConvert.DeserializeObject<List<ProductDto>>(Convert.ToString(response.Result));
@@ -40,7 +43,8 @@ namespace Mango.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await _productionService.CreateProductAsync<ResponseDto>(model);
+                var accessToken = await HttpContext.GetTokenAsync("access_token");
+                var response = await _productionService.CreateProductAsync<ResponseDto>(model, accessToken);
                 if (response != null && response.IsSuccess)
                 {
                     return RedirectToAction(nameof(ProductIndex));
@@ -53,7 +57,8 @@ namespace Mango.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await _productionService.GetProductByIdAsync<ResponseDto>(productId);
+                var accessToken = await HttpContext.GetTokenAsync("access_token");
+                var response = await _productionService.GetProductByIdAsync<ResponseDto>(productId, accessToken);
                 if (response != null && response.IsSuccess)
                 {
                     ProductDto model = JsonConvert.DeserializeObject<ProductDto>(Convert.ToString(response.Result));
@@ -69,7 +74,8 @@ namespace Mango.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await _productionService.UpdateProductAsync<ResponseDto>(model);
+                var accessToken = await HttpContext.GetTokenAsync("access_token");
+                var response = await _productionService.UpdateProductAsync<ResponseDto>(model, accessToken);
                 if (response != null && response.IsSuccess)
                 {
                     return RedirectToAction(nameof(ProductIndex));
@@ -82,7 +88,8 @@ namespace Mango.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await _productionService.GetProductByIdAsync<ResponseDto>(productId);
+                var accessToken = await HttpContext.GetTokenAsync("access_token");
+                var response = await _productionService.GetProductByIdAsync<ResponseDto>(productId, accessToken);
                 if (response != null && response.IsSuccess)
                 {
                     ProductDto model = JsonConvert.DeserializeObject<ProductDto>(Convert.ToString(response.Result));
@@ -97,7 +104,8 @@ namespace Mango.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await _productionService.DeleteProductAsync<ResponseDto>(model.ProductId);
+                var accessToken = await HttpContext.GetTokenAsync("access_token");
+                var response = await _productionService.DeleteProductAsync<ResponseDto>(model.ProductId, accessToken);
                 if (response.IsSuccess)
                 {
                     return RedirectToAction(nameof(ProductIndex));
