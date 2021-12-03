@@ -17,9 +17,18 @@ namespace Mango.Services.ShoppingCartAPI.Repository
             _mapper = mapper;
         }
 
-        public async Task<bool> ClearCart(string UserId)
+        public async Task<bool> ClearCart(string userId)
         {
-            throw new NotImplementedException();
+            var cartHearderFromDb = await _db.CartHearders.FirstOrDefaultAsync(u => u.UserId == userId);
+            if (cartHearderFromDb != null)
+            {
+                _db.CartDetails.RemoveRange(_db.CartDetails.Where(u => u.CartHearderId == cartHearderFromDb.CartHearderId));
+                _db.CartHearders.Remove(cartHearderFromDb);
+                SaveChanges();
+
+                return true;
+            }
+            return false;
         }
 
         public async Task<CartDto> CreateUpdateCart(CartDto cartDto)
@@ -34,7 +43,7 @@ namespace Mango.Services.ShoppingCartAPI.Repository
             if (prodInDb == null)
             {
                 _db.Products.Add(cart.CartDetails.FirstOrDefault().Product);
-                
+
                 SaveChanges();
             }
 
@@ -81,16 +90,45 @@ namespace Mango.Services.ShoppingCartAPI.Repository
                 }
             }
             return _mapper.Map<CartDto>(cart);
-         }
+        }
 
         public async Task<CartDto> GetCartByUserId(string userId)
         {
-            throw new NotImplementedException();
+            Cart cart = new()
+            {
+                CartHearder = await _db.CartHearders.FirstOrDefaultAsync(u => u.UserId == userId)
+            };
+
+            cart.CartDetails = _db.CartDetails
+                .Where(u => u.CartHearderId == cart.CartHearder.CartHearderId).Include(u => u.Product);
+
+            return _mapper.Map<CartDto>(cart);
         }
 
-        public async Task<bool> RemoveFromCart(int cartDetailsDto)
+        public async Task<bool> RemoveFromCart(int cartDetailsId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                CartDetails cartDetails = _db.CartDetails
+                    .FirstOrDefault(u => u.CartDetailId == cartDetailsId);
+
+                int totalCountOfCartItems = _db.CartDetails
+                    .Where(u => u.CartHearderId == cartDetails.CartHearderId).Count();
+
+                _db.CartDetails.Remove(cartDetails);
+                if (totalCountOfCartItems == 1)
+                {
+                    var carthearderToRemove = await _db.CartHearders
+                         .FirstOrDefaultAsync(u => u.CartHearderId == cartDetails.CartHearderId);
+                    _db.CartHearders.Remove(carthearderToRemove);
+                }
+                SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         private async void SaveChanges()
