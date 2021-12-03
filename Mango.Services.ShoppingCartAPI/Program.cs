@@ -22,7 +22,7 @@ IMapper mapper = MappinConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
 builder.Services.AddControllers();
 
 
