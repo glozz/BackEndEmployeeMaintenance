@@ -1,0 +1,7 @@
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.API\obj\Debug\net5.0\EmployeeMaintenance.API.csproj.AssemblyReference.cache
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.API\obj\Debug\net5.0\EmployeeMaintenance.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.API\obj\Debug\net5.0\EmployeeMaintenance.API.AssemblyInfoInputs.cache
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.API\obj\Debug\net5.0\EmployeeMaintenance.API.AssemblyInfo.cs
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.API\obj\Debug\net5.0\EmployeeMaintenance.API.csproj.CoreCompileInputs.cache
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.API\obj\Debug\net5.0\EmployeeMaintenance.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.API\obj\Debug\net5.0\EmployeeMaintenance.API.MvcApplicationPartsAssemblyInfo.cache

@@ -1,0 +1,12 @@
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Core\obj\Debug\net5.0\EmployeeMaintenance.Core.csproj.AssemblyReference.cache
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Core\obj\Debug\net5.0\EmployeeMaintenance.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Core\obj\Debug\net5.0\EmployeeMaintenance.Core.AssemblyInfoInputs.cache
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Core\obj\Debug\net5.0\EmployeeMaintenance.Core.AssemblyInfo.cs
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Core\obj\Debug\net5.0\EmployeeMaintenance.Core.csproj.CoreCompileInputs.cache
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Core\bin\Debug\net5.0\EmployeeMaintenance.Core.deps.json
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Core\bin\Debug\net5.0\EmployeeMaintenance.Core.dll
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Core\bin\Debug\net5.0\ref\EmployeeMaintenance.Core.dll
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Core\bin\Debug\net5.0\EmployeeMaintenance.Core.pdb
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Core\obj\Debug\net5.0\EmployeeMaintenance.Core.dll
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Core\obj\Debug\net5.0\ref\EmployeeMaintenance.Core.dll
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Core\obj\Debug\net5.0\EmployeeMaintenance.Core.pdb

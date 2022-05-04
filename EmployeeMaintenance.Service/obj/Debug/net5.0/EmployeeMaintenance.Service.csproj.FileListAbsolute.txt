@@ -1,0 +1,15 @@
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\bin\Debug\net5.0\EmployeeMaintenance.Service.deps.json
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\bin\Debug\net5.0\EmployeeMaintenance.Service.dll
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\bin\Debug\net5.0\ref\EmployeeMaintenance.Service.dll
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\bin\Debug\net5.0\EmployeeMaintenance.Service.pdb
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\obj\Debug\net5.0\EmployeeMaintenance.Service.csproj.AssemblyReference.cache
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\obj\Debug\net5.0\EmployeeMaintenance.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\obj\Debug\net5.0\EmployeeMaintenance.Service.AssemblyInfoInputs.cache
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\obj\Debug\net5.0\EmployeeMaintenance.Service.AssemblyInfo.cs
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\obj\Debug\net5.0\EmployeeMaintenance.Service.csproj.CoreCompileInputs.cache
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\obj\Debug\net5.0\EmployeeMaintenance.Service.dll
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\obj\Debug\net5.0\ref\EmployeeMaintenance.Service.dll
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\obj\Debug\net5.0\EmployeeMaintenance.Service.pdb
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\bin\Debug\net5.0\EmployeeMaintenance.Core.dll
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\bin\Debug\net5.0\EmployeeMaintenance.Core.pdb
+C:\Users\esrom\source\repos\EmployeeMaintenance.API\EmployeeMaintenance.Service\obj\Debug\net5.0\EmployeeMaintenance.Service.csproj.CopyComplete
