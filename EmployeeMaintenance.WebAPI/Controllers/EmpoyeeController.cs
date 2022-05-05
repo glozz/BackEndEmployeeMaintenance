@@ -145,7 +145,6 @@ namespace EmployeeMaintenance.WebAPI.Controllers
                         return BadRequest("no data to update");
 
                     employee.EmployeeNum = request.EmployeeNum;
-                    employee.PersonId = request.PersonId;
 
                     if (request.EmployedDate != "")
                         employee.EmployedDate = Convert.ToDateTime(request.EmployedDate);
