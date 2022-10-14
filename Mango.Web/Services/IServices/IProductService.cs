@@ -2,7 +2,7 @@
 
 namespace Mango.Web.Services.IServices
 {
-    public interface IProductServices : IBaseService
+    public interface IProductService : IBaseService
     {
         Task<T> GetAllProductAsync<T>(string token);
         Task<T> GetProductByIdAsync<T>(int id, string token);
