@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Mango.Services.ShoppingCartAPI.Models.Dto
+namespace Mango.Services.ShoppingCartAPI.Models
 {
-    public class CartHearderDto
+    public class CartHeader
     {
-        public int CartHearderId { get; set; }
+        [Key]
+        public int CartHeaderId { get; set; }
         public string UserId { get; set; }
         public string CouponCode { get; set; }
     }

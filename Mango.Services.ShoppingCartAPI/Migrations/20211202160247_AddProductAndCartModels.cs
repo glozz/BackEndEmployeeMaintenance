@@ -9,17 +9,17 @@ namespace Mango.Services.ShoppingCartAPI.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CartHearders",
+                name: "CartHeaders",
                 columns: table => new
                 {
-                    CartHearderId = table.Column<int>(type: "int", nullable: false)
+                    CartHeaderId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CouponCode = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CartHearders", x => x.CartHearderId);
+                    table.PrimaryKey("PK_CartHeaders", x => x.CartHeaderId);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,7 +44,7 @@ namespace Mango.Services.ShoppingCartAPI.Migrations
                 {
                     CartDetailId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CartHearderId = table.Column<int>(type: "int", nullable: false),
+                    CartHeaderId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     Count = table.Column<int>(type: "int", nullable: false)
                 },
@@ -52,10 +52,10 @@ namespace Mango.Services.ShoppingCartAPI.Migrations
                 {
                     table.PrimaryKey("PK_CartDetails", x => x.CartDetailId);
                     table.ForeignKey(
-                        name: "FK_CartDetails_CartHearders_CartHearderId",
-                        column: x => x.CartHearderId,
-                        principalTable: "CartHearders",
-                        principalColumn: "CartHearderId",
+                        name: "FK_CartDetails_CartHeaders_CartHeaderId",
+                        column: x => x.CartHeaderId,
+                        principalTable: "CartHeaders",
+                        principalColumn: "CartHeaderId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CartDetails_Products_ProductId",
@@ -66,9 +66,9 @@ namespace Mango.Services.ShoppingCartAPI.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartDetails_CartHearderId",
+                name: "IX_CartDetails_CartHeaderId",
                 table: "CartDetails",
-                column: "CartHearderId");
+                column: "CartHeaderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartDetails_ProductId",
@@ -82,7 +82,7 @@ namespace Mango.Services.ShoppingCartAPI.Migrations
                 name: "CartDetails");
 
             migrationBuilder.DropTable(
-                name: "CartHearders");
+                name: "CartHeaders");
 
             migrationBuilder.DropTable(
                 name: "Products");

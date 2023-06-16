@@ -1,7 +1,6 @@
 using AutoMapper;
-using Mango.Services.ShoppingCartAPI;
-using Mango.Services.ShoppingCartAPI.DbContexts;
-using Mango.Services.ShoppingCartAPI.Repository;
+using Mango.Services.CouponAPI;
+using Mango.Services.CouponAPI.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
@@ -22,7 +21,7 @@ IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddScoped<ICartRepository, CartRepository>();
+//builder.Services.AddScoped<ICouponRepository, CouponRepository>();
 builder.Services.AddControllers();
 
 
@@ -45,42 +44,6 @@ builder.Services.AddAuthorization(options =>
         policy.RequireClaim("scope", "mango");
     });
 });
-
-//builder.Services.AddSwaggerGen(c =>
-//{
-//    c.SwaggerDoc("v1", new OpenApiInfo 
-//    { 
-//        Title = "Mango.Services.ProductAPI", Version = "v1",
-//        Description = "Swagger Demo for ValuesController"
-//    });
-//    c.EnableAnnotations();
-//    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-//    {
-//        Description = @"Enter 'Bearer' [space] and your token",
-//        Name = "Authorization",
-//        In = ParameterLocation.Header,
-//        Type = SecuritySchemeType.ApiKey,
-//        Scheme = "Bearer"
-//    });
-
-//    c.AddSecurityRequirement(new OpenApiSecurityRequirement {
-//                    {
-//                        new OpenApiSecurityScheme
-//                        {
-//                            Reference = new OpenApiReference
-//                            {
-//                                Type=ReferenceType.SecurityScheme,
-//                                Id="Bearer"
-//                            },
-//                            Scheme="oauth2",
-//                            Name="Bearer",
-//                            In=ParameterLocation.Header
-//                        },
-//                        new List<string>()
-//                    }
-
-//                });
-//});
 
 var app = builder.Build();
 

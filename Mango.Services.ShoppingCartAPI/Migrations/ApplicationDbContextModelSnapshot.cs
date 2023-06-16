@@ -29,7 +29,7 @@ namespace Mango.Services.ShoppingCartAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartDetailId"), 1L, 1);
 
-                    b.Property<int>("CartHearderId")
+                    b.Property<int>("CartHeaderId")
                         .HasColumnType("int");
 
                     b.Property<int>("Count")
@@ -40,20 +40,20 @@ namespace Mango.Services.ShoppingCartAPI.Migrations
 
                     b.HasKey("CartDetailId");
 
-                    b.HasIndex("CartHearderId");
+                    b.HasIndex("CartHeaderId");
 
                     b.HasIndex("ProductId");
 
                     b.ToTable("CartDetails");
                 });
 
-            modelBuilder.Entity("Mango.Services.ShoppingCartAPI.Models.CartHearder", b =>
+            modelBuilder.Entity("Mango.Services.ShoppingCartAPI.Models.CartHeader", b =>
                 {
-                    b.Property<int>("CartHearderId")
+                    b.Property<int>("CartHeaderId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartHearderId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartHeaderId"), 1L, 1);
 
                     b.Property<string>("CouponCode")
                         .IsRequired()
@@ -63,9 +63,9 @@ namespace Mango.Services.ShoppingCartAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CartHearderId");
+                    b.HasKey("CartHeaderId");
 
-                    b.ToTable("CartHearders");
+                    b.ToTable("CartHeaders");
                 });
 
             modelBuilder.Entity("Mango.Services.ShoppingCartAPI.Models.Product", b =>
@@ -96,9 +96,9 @@ namespace Mango.Services.ShoppingCartAPI.Migrations
 
             modelBuilder.Entity("Mango.Services.ShoppingCartAPI.Models.CartDetails", b =>
                 {
-                    b.HasOne("Mango.Services.ShoppingCartAPI.Models.CartHearder", "CartHearder")
+                    b.HasOne("Mango.Services.ShoppingCartAPI.Models.CartHeader", "CartHeader")
                         .WithMany()
-                        .HasForeignKey("CartHearderId")
+                        .HasForeignKey("CartHeaderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -108,7 +108,7 @@ namespace Mango.Services.ShoppingCartAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CartHearder");
+                    b.Navigation("CartHeader");
 
                     b.Navigation("Product");
                 });

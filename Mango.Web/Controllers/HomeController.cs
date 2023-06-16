@@ -54,6 +54,7 @@ namespace Mango.Web.Controllers
             {
                 CartHeader = new CartHeaderDto
                 {
+                    CouponCode = "",
                     UserId = User.Claims.Where(u => u.Type == "sub")?.FirstOrDefault()?.Value
                 }
             };
@@ -64,9 +65,8 @@ namespace Mango.Web.Controllers
                 ProductId = productDto.ProductId,
                 CartHeader = new CartHeaderDto
                 {
-                    UserId = "",
-                    CartHeaderId = 0,
-                    CouponCode = ""
+                    CouponCode = "",
+                    UserId = User.Claims.Where(u => u.Type == "sub")?.FirstOrDefault()?.Value
                 }
             };
 
@@ -81,6 +81,9 @@ namespace Mango.Web.Controllers
             cartDto.CartDetails = cartDetailsDtos;
 
             var accessToken = await HttpContext.GetTokenAsync("access_token");
+
+
+            string jsonData = JsonConvert.SerializeObject(cartDto, Formatting.None);
 
             var addToCartResponse = await _cartService.AddToCartAsnyc<ResponseDto>(cartDto, accessToken);
 
